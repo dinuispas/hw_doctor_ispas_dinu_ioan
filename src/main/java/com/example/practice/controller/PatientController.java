@@ -4,10 +4,7 @@ import com.example.practice.model.Patient;
 import com.example.practice.model.Specialty;
 import com.example.practice.model.Visit;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.example.practice.service.PatientService;
 
 import java.util.List;
@@ -23,9 +20,14 @@ public class PatientController {
         return patientService.getAllPatients();
     }
 
-    @GetMapping("/{id}")
-    public Patient getPatientById(@PathVariable Integer id){
-        return patientService.getById(id);
+    @GetMapping("/{cnp}")
+    public Patient getPatientByCnp(@PathVariable String cnp){
+        return patientService.getByCnp(cnp);
+    }
+
+    @PostMapping("/addPatient")
+    public void addPatient(@RequestBody Patient patient){
+        patientService.savePatient(patient);
     }
 
     @GetMapping("/visits/{cnp}/{specialty}")

@@ -31,8 +31,16 @@ public class PatientService {
         return patientRepository.getById(patientId);
     }
 
+    public Patient getByCnp(String cnp){
+        return patientRepository.getPatientByCnp(cnp);
+    }
+
     public List<Visit> getAllVisitsByCnpAndSpecialty(String cnp, Specialty specialty){
         return visitRepository.getAllByPatient_CnpAndDoctor_Specialty(cnp,specialty);
+    }
+
+    public void savePatient(Patient patient){
+        patientRepository.save(patient);
     }
 
 

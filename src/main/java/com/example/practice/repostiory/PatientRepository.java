@@ -15,5 +15,7 @@ public interface PatientRepository extends JpaRepository<Patient,Integer>
 
     List<Patient> getAllByDoctor(Doctor doctor);
 
+    Patient getPatientByCnp(String cnp);
+
 
 }
